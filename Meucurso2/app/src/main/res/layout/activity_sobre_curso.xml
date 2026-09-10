@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Cabeçalho Verde -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_green"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="48dp"
+            android:paddingBottom="48dp"
+            android:paddingHorizontal="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONHEÇA MAIS"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:textColor="#B2DFDB"
+                android:gravity="center"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sobre o Curso"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Card de Conteúdo Flutuante -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center_horizontal">
+
+                <View
+                    android:layout_width="36dp"
+                    android:layout_height="4dp"
+                    android:background="@color/primary_green"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="O curso de Análise e Desenvolvimento de Sistemas tem como objetivo formar profissionais capacitados para projetar, documentar, especificar, testar, implementar e manter sistemas computacionais de informação."
+                    android:textSize="14sp"
+                    android:textColor="@color/text_muted"
+                    android:lineSpacingExtra="4dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="28dp"/>
+
+                <!-- Botão Ver Disciplinas -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDisciplinas"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="VER DISCIPLINAS"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/primary_green"
+                    app:cornerRadius="27dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Botão Voltar -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVoltar"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="VOLTAR"
+                    android:textColor="@color/primary_green"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:strokeColor="@color/primary_green"
+                    app:strokeWidth="1.5dp"
+                    app:cornerRadius="27dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

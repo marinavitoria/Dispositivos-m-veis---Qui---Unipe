@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5F7"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Cabeçalho Verde -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="48dp"
+            android:paddingBottom="48dp"
+            android:paddingHorizontal="24dp">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:src="@drawable/logo_nova"
+                android:contentDescription="Logo do curso"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UNIVERSIDADE EXEMPLO"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:textColor="#B2DFDB"
+                android:gravity="center"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Análise e Desenvolvimento de Sistemas"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Card Flutuante de Conteúdo -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center_horizontal">
+
+                <!-- Detalhe em linha no topo do texto -->
+                <View
+                    android:layout_width="36dp"
+                    android:layout_height="4dp"
+                    android:background="#005F56"
+                    android:layout_marginBottom="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prepare-se para transformar ideias em soluções tecnológicas. O curso capacita você para atuar na criação, desenvolvimento e manutenção de sistemas."
+                    android:textSize="14sp"
+                    android:textColor="#4A5568"
+                    android:lineSpacingExtra="4dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="28dp"/>
+
+                <!-- Botão Principal -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnConheca"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="CONHEÇA O CURSO"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:backgroundTint="#005F56"
+                    app:cornerRadius="27dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- Botão Secundário -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDisciplinas"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="DISCIPLINAS"
+                    android:textColor="#005F56"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:strokeColor="#005F56"
+                    app:strokeWidth="1.5dp"
+                    app:cornerRadius="27dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

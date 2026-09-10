@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header com Nome da Disciplina -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_green"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="44dp"
+            android:paddingBottom="48dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DETALHES DA MATÉRIA"
+                android:textColor="#B2DFDB"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"/>
+
+            <TextView
+                android:id="@+id/txtNomeDisciplina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome da Disciplina"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- Card de Informações da Matéria -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/txtDescricao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição da disciplina..."
+                    android:textSize="14sp"
+                    android:textColor="@color/text_muted"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/card_border"
+                    android:layout_marginBottom="20dp"/>
+
+                <!-- Lista de Propriedades -->
+                <TextView
+                    android:id="@+id/txtCargaHoraria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carga horária: --"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_dark"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/txtModalidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Modalidade: --"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_dark"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/txtNivel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nível: --"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_dark"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:id="@+id/txtPreRequisito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pré-requisito: --"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_dark"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="28dp"/>
+
+                <!-- Botão Voltar -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVoltar"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="VOLTAR"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/primary_green"
+                    app:cornerRadius="27dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

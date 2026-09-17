@@ -1,0 +1,139 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+abstract class ContaBancaria(
+    val numeroConta: String,
+    val titular: String,
+    saldoInicial: Double = 0.0
+) {
+    var saldo: Double = saldoInicial
+        protected set
+
+    private val historicoOperacoes = mutableListOf<String>()
+
+    init {
+        require(saldoInicial >= 0) { "O saldo inicial não pode ser negativo." }
+    }
+
+    abstract fun aplicarRegraMensal()
+
+    open fun depositar(valor: Double): Boolean {
+        if (valor <= 0) {
+            println("Erro: Valor de depósito inválido! (R$ $valor)")
+            registrarHistorico("Tentativa de depósito inválido de R$ $valor.")
+            return false
+        }
+        saldo += valor
+        println("Depósito de R$ $valor realizado com sucesso!")
+        registrarHistorico("Depósito de R$ $valor realizado.")
+        return true
+    }
+
+    open fun sacar(valor: Double): Boolean {
+        if (valor <= 0) {
+            println("Erro: Valor de saque inválido!")
+            return false
+        }
+        if (saldo >= valor) {
+            saldo -= valor
+            println("Saque de R$ $valor realizado com sucesso!")
+            registrarHistorico("Saque de R$ $valor realizado.")
+            return true
+        } else {
+            println("Saldo insuficiente para realizar esta operação!")
+            registrarHistorico("Tentativa frustrada de saque de R$ $valor (Saldo insuficiente).")
+            return false
+        }
+    }
+
+    fun transferir(contaDestino: ContaBancaria, valor: Double): Boolean {
+        if (this.sacar(valor)) {
+            contaDestino.depositar(valor)
+            println("Transferência realizada com sucesso!")
+            registrarHistorico("Transferência de R$ $valor enviada para conta ${contaDestino.numeroConta}.")
+            return true
+        }
+        println("Falha na transferência.")
+        return false
+    }
+
+    fun exibirDados() {
+        println("==================================")
+        println("BANCO BYTEBANK EVOLUTION")
+        println("==================================")
+        println("Cliente: $titular")
+        println("Conta: $numeroConta")
+        println("Saldo Atual: R$ $saldo")
+    }
+
+    protected fun registrarHistorico(descricao: String) {
+        val horaAtual = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))
+        historicoOperacoes.add("[$horaAtual] $descricao")
+    }
+
+    fun exibirHistorico() {
+        println("\n===")
+        println("HISTÓRICO DE OPERAÇÕES - Conta $numeroConta ($titular)")
+        println("===")
+        if (historicoOperacoes.isEmpty()) {
+            println("Nenhuma operação registrada.")
+        } else {
+            historicoOperacoes.forEach { println(it) }
+        }
+    }
+}
+
+class ContaCorrente(
+    numeroConta: String,
+    titular: String,
+    saldoInicial: Double = 0.0,
+    val taxaManutencao: Double = 30.0
+) : ContaBancaria(numeroConta, titular, saldoInicial) {
+
+    override fun aplicarRegraMensal() {
+        println("Aplicando taxa mensal de R$ $taxaManutencao...")
+        if (saldo >= taxaManutencao) {
+            saldo -= taxaManutencao
+            println("Novo saldo: R$ $saldo")
+            registrarHistorico("Cobrança de taxa mensal: R$ $taxaManutencao.")
+        } else {
+            println("Saldo insuficiente para cobrar a taxa mensal integralmente.")
+        }
+    }
+}
+
+class ContaPoupanca(
+    numeroConta: String,
+    titular: String,
+    saldoInicial: Double = 0.0,
+    val taxaRendimento: Double = 0.005
+) : ContaBancaria(numeroConta, titular, saldoInicial) {
+
+    override fun aplicarRegraMensal() {
+        val rendimento = saldo * taxaRendimento
+        saldo += rendimento
+        println("Rendimento mensal aplicado: R$ $rendimento. Novo saldo: R$ $saldo")
+        registrarHistorico("Rendimento mensal de R$ $rendimento aplicado.")
+    }
+}
+
+fun main() {
+    val contaMaria = ContaCorrente(numeroConta = "1001", titular = "Maria Silva", saldoInicial = 2200.0)
+    val contaJoao = ContaPoupanca(numeroConta = "2001", titular = "João Pedro", saldoInicial = 1000.0)
+
+    contaMaria.exibirDados()
+    contaMaria.depositar(500.0)
+    contaMaria.sacar(200.0)
+    contaMaria.sacar(5000.0)
+    contaMaria.aplicarRegraMensal()
+
+    println("\nIniciando transferência entre contas...")
+    contaMaria.transferir(contaJoao, 100.0)
+
+    contaMaria.exibirHistorico()
+
+    println("\n--- Status do Destinatário ---")
+    contaJoao.exibirDados()
+    contaJoao.aplicarRegraMensal()
+    contaJoao.exibirHistorico()
+}
